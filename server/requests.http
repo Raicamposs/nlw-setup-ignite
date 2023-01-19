@@ -1,0 +1,28 @@
+### Find Days
+# @name FindDays
+GET http://localhost:3000/day
+    ?date={{$localDatetime iso8601}}
+
+### Create habits
+
+POST http://localhost:3000/habits HTTP/1.1
+Content-Type: application/json
+
+{
+	"title" : "Estudar NodeJS",
+	"weekDays": [0,1,2,3,4,5,6]
+}   
+
+### Habits toggle completed
+
+@habitsId = {{ FindDays.response.body.$.possibleHabits[0].id }}
+
+PATCH http://localhost:3000/habits/{{habitsId}}/toggle HTTP/1.1
+Content-Type: application/json
+
+{
+
+}
+
+### Find Summaries
+GET http://localhost:3000/summary     
